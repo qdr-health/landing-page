@@ -14,12 +14,12 @@ export function Header() {
             width={240}
             height={64}
             priority
-            className="h-14 w-auto animate-spin-slow sm:h-16"
+            className="h-14 w-auto animate-spin-slow dark:invert sm:h-16"
           />
         </Link>
 
         {/* CTA */}
-        <Button asChild variant="default" className=" text-white rounded-full">
+        <Button asChild variant="default" className="text-black rounded-full">
           <Link href="https://cal.com/habeeb-kamal-3tea7c/30min" target="_blank" rel="noopener noreferrer">Book a Call</Link>
         </Button>
       </nav>
