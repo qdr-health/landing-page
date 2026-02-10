@@ -108,7 +108,7 @@ export function Team() {
 
       <div className="mt-16 flex justify-center">
         <Button variant="default" className=" text-white rounded-full">
-          <Link href="/contact">Book a Call</Link>
+          <Link href="https://cal.com/habeeb-kamal-3tea7c/30min" target="_blank" rel="noopener noreferrer">Book a Call</Link>
         </Button>
       </div>
     </section>

@@ -31,7 +31,9 @@ export function Footer() {
                 Terms of Service
               </Link>
               <Link
-                href="/contact"
+                href="https://cal.com/habeeb-kamal-3tea7c/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 Contact Us
