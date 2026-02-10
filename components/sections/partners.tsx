@@ -4,14 +4,12 @@ import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 const partners = [
+  { name: "NHS", logo: "/partners/nhs.png" },
   { name: "British Heart Foundation", logo: "/partners/bhf.jpg" },
   { name: "Clinical Entrepreneur", logo: "/partners/clinicalentrepeneur.webp" },
-  { name: "DHL", logo: "/partners/dhl.png" },
-  { name: "European Society of Cardiology", logo: "/partners/esc.jpg" },
-  { name: "NHS", logo: "/partners/nhs.png" },
-  { name: "P4", logo: "/partners/p4.jpeg" },
-  { name: "Pioneer", logo: "/partners/pioneer.png" },
   { name: "Yorkshire", logo: "/partners/yorkshire.png" },
+  { name: "P4", logo: "/partners/p4.jpeg" },
+  { name: "DHL", logo: "/partners/dhl.png" },
 ];
 
 const containerVariants: Variants = {
@@ -56,7 +54,7 @@ export function Partners() {
 
         {/* Grid container */}
         <motion.div
-          className="relative grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-border sm:grid-cols-4"
+          className="relative grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-border sm:grid-cols-3"
           variants={shouldReduceMotion ? undefined : containerVariants}
           initial={shouldReduceMotion ? undefined : "hidden"}
           whileInView={shouldReduceMotion ? undefined : "visible"}
