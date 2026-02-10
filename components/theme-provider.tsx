@@ -9,12 +9,28 @@ function isDaytime(lat: number, lng: number): boolean {
   return now >= times.sunrise && now < times.sunset;
 }
 
+function updateFavicon(isDark: boolean) {
+  const existingLink = document.querySelector(
+    'link[rel="icon"]'
+  ) as HTMLLinkElement | null;
+
+  if (existingLink) {
+    existingLink.href = isDark ? "/icon-dark.png" : "/icon-light.png";
+  } else {
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.href = isDark ? "/icon-dark.png" : "/icon-light.png";
+    document.head.appendChild(link);
+  }
+}
+
 function applyTheme(isDark: boolean) {
   if (isDark) {
     document.documentElement.classList.add("dark");
   } else {
     document.documentElement.classList.remove("dark");
   }
+  updateFavicon(isDark);
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
