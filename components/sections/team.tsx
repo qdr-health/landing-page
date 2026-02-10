@@ -41,13 +41,13 @@ const founders: TeamMember[] = [
 const clinicalFounders: TeamMember[] = [
   {
     name: "Dr Ian Cummings",
-    role: "Clinical Co-Founder",
+    role: "Strategic Advisor",
     image: "/founders/1749933862349.jpeg",
     linkedin: "https://www.linkedin.com/in/ian-cummings-4017b236b/",
   },
   {
     name: "Dr Zarrin Shaikh",
-    role: "Clinical Co-Founder",
+    role: "Clinical Advisor",
     image: "/founders/1593597167788.jpeg",
     linkedin: "https://www.linkedin.com/in/zarrin-shaikh/",
   },

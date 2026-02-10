@@ -42,10 +42,10 @@ export function Partners() {
     <section id="partners" className="py-24">
       <div className="space-y-4">
         <span className="text-xs font-medium uppercase tracking-widest text-accent-teal">
-          Trusted By
+          Backed By
         </span>
         <h2 className="max-w-lg text-xl font-normal leading-snug text-foreground sm:text-2xl">
-          Backed by leading healthcare organizations
+          Trusted by leading healthcare organizations
         </h2>
       </div>
 
