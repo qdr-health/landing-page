@@ -19,7 +19,7 @@ export function Header() {
         </Link>
 
         {/* CTA */}
-        <Button asChild variant="default" className="text-black rounded-full">
+        <Button asChild variant="default" className="text-white dark:text-black rounded-full">
           <Link href="https://cal.com/habeeb-kamal-3tea7c/30min" target="_blank" rel="noopener noreferrer">Book a Call</Link>
         </Button>
       </nav>

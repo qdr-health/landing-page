@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import SunCalc from "suncalc";
+
+interface IpLocation {
+  lat: number;
+  lon: number;
+}
 
 function isDaytime(lat: number, lng: number): boolean {
   const now = new Date();
@@ -33,65 +38,55 @@ function applyTheme(isDark: boolean) {
   updateFavicon(isDark);
 }
 
+async function getLocationFromIp(): Promise<IpLocation | null> {
+  try {
+    const response = await fetch("https://ip-api.com/json/?fields=lat,lon");
+    if (!response.ok) return null;
+    const data = await response.json();
+    return { lat: data.lat, lon: data.lon };
+  } catch {
+    return null;
+  }
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const updateThemeFromLocation = useCallback(
-    (position: GeolocationPosition) => {
-      const { latitude, longitude } = position.coords;
-      const daytime = isDaytime(latitude, longitude);
-      applyTheme(!daytime);
-    },
-    []
-  );
-
-  const fallbackToSystemPreference = useCallback(() => {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    applyTheme(prefersDark);
-
-    // Listen for system preference changes
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handler = (e: MediaQueryListEvent) => applyTheme(e.matches);
-    mediaQuery.addEventListener("change", handler);
-
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
-
   useEffect(() => {
-    let cleanup: (() => void) | undefined;
     let intervalId: NodeJS.Timeout | undefined;
 
-    if (!("geolocation" in navigator)) {
-      cleanup = fallbackToSystemPreference();
-      return () => cleanup?.();
-    }
+    async function initTheme() {
+      const location = await getLocationFromIp();
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        // Initial theme update
-        updateThemeFromLocation(position);
+      if (location) {
+        // Apply theme based on sunrise/sunset
+        const daytime = isDaytime(location.lat, location.lon);
+        applyTheme(!daytime);
 
         // Check every minute for sunrise/sunset transitions
         intervalId = setInterval(() => {
-          updateThemeFromLocation(position);
+          const daytime = isDaytime(location.lat, location.lon);
+          applyTheme(!daytime);
         }, 60000);
-      },
-      () => {
-        // Geolocation denied or failed - fall back to system preference
-        cleanup = fallbackToSystemPreference();
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 10000,
-        maximumAge: 3600000, // Cache position for 1 hour
+      } else {
+        // Fallback to system preference
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        applyTheme(prefersDark);
+
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const handler = (e: MediaQueryListEvent) => applyTheme(e.matches);
+        mediaQuery.addEventListener("change", handler);
+
+        return () => mediaQuery.removeEventListener("change", handler);
       }
-    );
+    }
+
+    initTheme();
 
     return () => {
-      cleanup?.();
       if (intervalId) clearInterval(intervalId);
     };
-  }, [updateThemeFromLocation, fallbackToSystemPreference]);
+  }, []);
 
   return <>{children}</>;
 }
