@@ -40,10 +40,10 @@ function applyTheme(isDark: boolean) {
 
 async function getLocationFromIp(): Promise<IpLocation | null> {
   try {
-    const response = await fetch("https://ip-api.com/json/?fields=lat,lon");
+    const response = await fetch("https://ipapi.co/json/");
     if (!response.ok) return null;
     const data = await response.json();
-    return { lat: data.lat, lon: data.lon };
+    return { lat: data.latitude, lon: data.longitude };
   } catch {
     return null;
   }
