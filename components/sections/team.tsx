@@ -55,7 +55,7 @@ const clinicalFounders: TeamMember[] = [
 
 function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
-    <div className="space-y-4">
+    <div className="w-40 space-y-4 sm:w-48">
       <div className="aspect-[4/5] overflow-hidden rounded-lg bg-muted">
         <Image
           src={member.image}
@@ -97,7 +97,7 @@ export function Team() {
         </h2>
       </div>
 
-      <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-8">
+      <div className="mt-12 flex flex-wrap justify-center gap-4 sm:gap-8">
         {founders.map((member) => (
           <TeamMemberCard key={member.name} member={member} />
         ))}
