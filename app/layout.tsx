@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://qdrhealth.com"),
   title: "QDR Health",
   description:
     "Clinicians and engineers building AI for better patient care. Toju is an AI voice agent for proactive patient outreach and triage.",

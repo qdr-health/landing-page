@@ -30,12 +30,12 @@ const founders: TeamMember[] = [
     image: "/founders/1701431008808.jpeg",
     linkedin: "https://www.linkedin.com/in/habeeb-kamal-b31716166/",
   },
-  {
-    name: "Abdullah M",
-    role: "Co-Founder & CTO",
-    image: "/founders/1769194285669.png",
-    linkedin: "https://www.linkedin.com/in/abdullah-m-2a1677167/",
-  },
+  // {
+  //   name: "Abdullah M",
+  //   role: "Co-Founder & CTO",
+  //   image: "/founders/1769194285669.png",
+  //   linkedin: "https://www.linkedin.com/in/abdullah-m-2a1677167/",
+  // },
 ];
 
 const clinicalFounders: TeamMember[] = [
@@ -107,8 +107,17 @@ export function Team() {
       </div>
 
       <div className="mt-16 flex justify-center">
-        <Button variant="default" className="text-white dark:text-black rounded-full">
-          <Link href="https://cal.com/habeeb-kamal-3tea7c/30min" target="_blank" rel="noopener noreferrer">Book a Call</Link>
+        <Button
+          variant="default"
+          className="text-white dark:text-black rounded-full"
+        >
+          <Link
+            href="https://cal.com/habeeb-kamal-3tea7c/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book a Call
+          </Link>
         </Button>
       </div>
     </section>
