@@ -110,7 +110,7 @@ AI voice agent healthcare, AI phone calls patients, automated patient check-in, 
 
 ## Repository context (coding agents)
 
-This repo is the **Next.js 15** marketing site for QDR Health. Before UI changes, read `/docs/DESIGN_SYSTEM.md` and `/docs/ANIMATION.md`. Project conventions live in `CLAUDE.md`.
+This repo is the **Next.js 15** marketing site for QDR Health. This file is the single source of truth at the repo root; production serves it at `/AGENTS.md` via a rewrite to `/api/agents-md` (no duplicate under `public/`). Before UI changes, read `/docs/DESIGN_SYSTEM.md` and `/docs/ANIMATION.md`. Project conventions live in `CLAUDE.md`.
 
 | Task | Command |
 | ---- | ------- |
