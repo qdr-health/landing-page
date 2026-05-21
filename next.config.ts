@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      { source: "/AGENTS.md", destination: "/api/agents-md" },
+      { source: "/agents.md", destination: "/api/agents-md" },
+    ];
+  },
 };
 
 export default nextConfig;
