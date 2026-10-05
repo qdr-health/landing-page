@@ -45,12 +45,6 @@ const clinicalFounders: TeamMember[] = [
     image: "/founders/1749933862349.jpeg",
     linkedin: "https://www.linkedin.com/in/ian-cummings-4017b236b/",
   },
-  {
-    name: "Dr Zarrin Shaikh",
-    role: "Clinical Advisor",
-    image: "/founders/1593597167788.jpeg",
-    linkedin: "https://www.linkedin.com/in/zarrin-shaikh/",
-  },
 ];
 
 function TeamMemberCard({ member }: { member: TeamMember }) {
